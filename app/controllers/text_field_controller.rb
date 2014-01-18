@@ -4,6 +4,8 @@ class RCTextFieldController < UITableViewController
   TEXT_FIELD_CELL_ID = "TextFieldCellID"
   SOURCE_CELL_ID = "SourceCellID"
   VIEW_TAG = 1
+  LEFT_MARGIN = 20.0
+  TEXT_FIELD_HEIGHT = 30.0
 
   def viewDidLoad
     super
@@ -60,7 +62,7 @@ class RCTextFieldController < UITableViewController
         textField = @data_source_array[index_path.section][:view]
         
         CGRect newFrame = textField.frame # make sure this textfield's width matches the width of the cell
-        newFrame.size.width = CGRectGetWidth(cell.contentView.frame) - kLeftMargin*2
+        newFrame.size.width = CGRectGetWidth(cell.contentView.frame) - LETF_MARGIN*2
         textField.frame = newFrame
         textField.autoresizingMask = UIViewAutoresizingFlexibleWidth # if the cell is ever resized, keep the textfield's width to match the cell's width
 
@@ -170,7 +172,7 @@ class RCTextFieldController < UITableViewController
 
   def textFieldLeftView
     if @text_field_left_view.nil?
-      frame = CGRectMake(kLeftMargin, 8.0, TEXT_FIELD_WIDTH, kTextFieldHeight)
+      frame = CGRectMake(LEFT_MARGIN, 8.0, TEXT_FIELD_WIDTH, TEXT_FIELD_HEIGHT)
       @text_field_left_view = UITextField.alloc.initWithFrame(frame)
       @text_field_left_view.borderStyle = UITextBorderStyleBezel
       @text_field_left_view.textColor = UIColor.blackColor

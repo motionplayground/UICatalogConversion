@@ -15,11 +15,13 @@ class RCMainViewController < UITableViewController
     # construct the array of page descriptions we will use (each description is a dictionary) 
     self.menu_list = []
 
-    # this is just an example for how to add VCs and their info
-    test_viewcontroller = UIViewController.alloc.initWithNibName(nil, bundle:nil)
+    # text_field_view_controller = RCTextFieldController.alloc.initWithNibName(nil, bundle:nil)
+    
+    # self.menu_list.addObject({TITLE_KEY => "TextFields", EXPLAIN_KEY => "Uses of UITextField", VIEW_CONTROLLER_KEY => text_field_view_controller})
 
-    # adding the VC info 
-    self.menu_list.addObject({TITLE_KEY => "Test View Controller",EXPLAIN_KEY => "just for test", VIEW_CONTROLLER_KEY => test_viewcontroller})
+    segment_view_controller = RCSegmentViewController.alloc.initWithNibName(nil, bundle:nil)
+
+    self.menu_list.addObject({TITLE_KEY => "SegmentTitle", EXPLAIN_KEY => "SegmentExplain", VIEW_CONTROLLER_KEY => segment_view_controller})
 
     # register our cell ID for later when we are asked for UITableViewCells (iOS 6.0 a later)
     tableView.registerClass(RCMyTableViewCell, forCellReuseIdentifier:CELL_IDENTIFIER)
